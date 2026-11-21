@@ -1,0 +1,99 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  TRAINING_CENTER_ADMIN
+  DISTRICT_OFFICER
+  QUALITY_OFFICER
+  STATE_ADMIN
+}
+
+enum BatchStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  RETURNED
+  REJECTED
+  QUALITY_REVIEW
+  STATE_APPROVAL
+  APPROVED
+  CERTIFICATES_ISSUED
+}
+
+enum CandidateStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SENT_BACK
+  ISSUED
+  REVOKED
+}
+
+enum ApprovalDecision {
+  APPROVED
+  REJECTED
+  SENT_BACK
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  role      UserRole
+  createdAt DateTime @default(now())
+
+  batches   Batch[]    @relation("CenterBatches")
+  approvals Approval[]
+}
+
+model Batch {
+  id          Int         @id @default(autoincrement())
+  batchName   String
+  centerId    Int
+  status      BatchStatus @default(DRAFT)
+  reviewRound Int         @default(1)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  submittedAt DateTime?
+
+  center      User        @relation("CenterBatches", fields: [centerId], references: [id])
+  candidates  Candidate[]
+  approvals   Approval[]
+}
+
+model Candidate {
+  id              Int             @id @default(autoincrement())
+  batchId         Int
+  candidateName   String
+  email           String?
+  phone           String
+  courseName      String
+  completionDate  DateTime?
+  status          CandidateStatus @default(PENDING)
+  certificateId   String?         @unique
+  createdAt       DateTime        @default(now())
+
+  batch           Batch           @relation(fields: [batchId], references: [id])
+}
+
+model Approval {
+  id         Int              @id @default(autoincrement())
+  batchId    Int
+  officerId  Int
+  decision   ApprovalDecision
+  comments   String?
+  reviewRound Int             @default(1)
+  createdAt  DateTime         @default(now())
+
+  batch      Batch            @relation(fields: [batchId], references: [id])
+  officer    User             @relation(fields: [officerId], references: [id])
+
+  @@unique([batchId, officerId, reviewRound])
+}
