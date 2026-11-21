@@ -22,14 +22,14 @@ button {
   cursor: pointer;
   border-radius: 8px;
   padding: 11px 18px;
-  background: #4f46e5;
+  background: #15803d;
   color: white;
   font-weight: 600;
   transition: 0.2s;
 }
 
 button:hover {
-  background: #4338ca;
+  background: #166534;
 }
 
 .app {
@@ -57,7 +57,7 @@ button:hover {
 .brand-icon {
   width: 42px;
   height: 42px;
-  background: #4f46e5;
+  background: #15803d;
   color: white;
   display: grid;
   place-items: center;
@@ -103,7 +103,7 @@ button:hover {
 }
 
 .eyebrow {
-  color: #4f46e5;
+  color: #15803d;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -137,7 +137,7 @@ button:hover {
 }
 
 .role-card strong {
-  color: #4f46e5;
+  color: #15803d;
 }
 
 /* Statistics */
@@ -203,12 +203,12 @@ button:hover {
 }
 
 .secondary {
-  background: #eef2ff;
-  color: #4338ca;
+  background: #dcfce7;
+  color: #166534;
 }
 
 .secondary:hover {
-  background: #e0e7ff;
+  background: #bbf7d0;
 }
 
 /* Forms */
@@ -232,8 +232,8 @@ select {
 
 input:focus,
 select:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+  border-color: #15803d;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12);
 }
 
 /* Tables */
@@ -267,7 +267,7 @@ td {
 }
 
 tbody tr:hover {
-  background: #fafbff;
+  background: #f0fdf4;
 }
 
 .empty {
@@ -280,8 +280,8 @@ tbody tr:hover {
   display: inline-block;
   padding: 6px 11px;
   border-radius: 20px;
-  background: #e8eefc;
-  color: #294c9b;
+  background: #dcfce7;
+  color: #166534;
   font-size: 11px;
   font-weight: 700;
   white-space: nowrap;
@@ -296,9 +296,9 @@ tbody tr:hover {
 /* Notifications */
 
 .message {
-  background: #eef2ff;
-  color: #3730a3;
-  border: 1px solid #c7d2fe;
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
   border-radius: 8px;
   padding: 13px 16px;
   margin-bottom: 20px;
@@ -310,7 +310,7 @@ tbody tr:hover {
 
 .message button {
   background: transparent;
-  color: #3730a3;
+  color: #166534;
   padding: 0 5px;
   font-size: 22px;
 }
